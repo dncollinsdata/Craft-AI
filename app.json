@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Galaxy Craft AI",
+    "slug": "galaxy-craft-ai",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "galaxy-craft-ai",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "edgeToEdgeEnabled": true
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
