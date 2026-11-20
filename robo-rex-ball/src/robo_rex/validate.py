@@ -55,6 +55,17 @@ def path_check(max_step_deg=1.5):
     return hits, n_states
 
 
+def jaw_sweep(step=1.0):
+    """Open the jaw through its whole range in dinosaur mode."""
+    lo, hi = K.JOINTS["jaw"]["range"]
+    hits = []
+    for a in np.arange(hi, lo - 1e-9, -step):
+        q = K.pose_q("dino")
+        q["jaw"] = float(a)
+        hits += [(float(a), x, y, round(v, 3)) for x, y, v in C.overlaps(q)]
+    return hits
+
+
 # --------------------------------------------------------------- stops ------
 STOP_TESTS = {
     # joint: (pose used for others, child part, parent part)
@@ -188,7 +199,7 @@ def rolling(n_dirs=6000):
     r = _outer_radius(allm, D)
     # sagittal great circle (forward roll about Y) and the side circle (roll about X)
     a = np.radians(np.arange(0, 360, 0.5))
-    Ds = np.stack([np.cos(a), np.zeros_like(a), np.sin(a)], 1)
+    Ds = np.stack([np.cos(a), np.full_like(a, 0.02), np.sin(a)], 1)   # off the y=0 mesh seam
     rs = _outer_radius(allm, Ds)
     Dl = np.stack([np.zeros_like(a), np.cos(a), np.sin(a)], 1)
     rl = _outer_radius(allm, Dl)

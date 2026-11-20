@@ -29,7 +29,7 @@ def front_panel():
     half = _deg(P.LATCH_W / 2 + P.SLIDE, 48.5)
     p = p.cut(sector(P.R_FP_IN - 0.5, P.R + 1, P.LATCH_PHI - 360 - half,
                      P.LATCH_PHI - 360 + half, P.Y_PANEL - 1,
-                     1.0 + P.LATCH_LEN + P.LATCH_TRAVEL + 0.4))
+                     1.0 + 8.0 + P.LATCH_TRAVEL + 0.4))
     # layered armour plate grooves (0.6 deep): meridians and latitudes
     for ph in (-80.0, -45.0, -10.0, 25.0, 50.0):
         p = p.cut(sector(P.R - 0.6, P.R + 1, ph - 0.5, ph + 0.5, 12, 44))

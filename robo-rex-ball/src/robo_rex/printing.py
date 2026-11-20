@@ -82,3 +82,22 @@ def nonmanifold_edges(m):
     e = m.edges_sorted
     ok = group_rows(e, require_count=2)
     return int(len(e) - 2 * len(ok))
+
+
+def clean_mesh(m):
+    """Make a tessellation watertight: merge coincident seam vertices with
+    manifold3d (OCC sometimes leaves unshared vertices along tangent seams)
+    and rebuild a guaranteed-manifold mesh."""
+    import manifold3d as mf
+    if m.is_watertight and nonmanifold_edges(m) == 0:
+        return m
+    mm = mf.Mesh(vert_properties=np.asarray(m.vertices, np.float32),
+                 tri_verts=np.asarray(m.faces, np.uint32))
+    mm.merge()
+    man = mf.Manifold(mm)
+    if man.status() != mf.Error.NoError:
+        m2 = m.copy()
+        m2.merge_vertices(digits_vertex=4)
+        return m2
+    out = man.to_mesh()
+    return trimesh.Trimesh(np.asarray(out.vert_properties)[:, :3], np.asarray(out.tri_verts), process=True)

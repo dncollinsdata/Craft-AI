@@ -1,0 +1,37 @@
+torso                    vol  88.08 cm3  ext [100.   63.7  68.1]  overhang    470 mm2  bed     0 mm2  watertight True
+rear_shell               vol  20.49 cm3  ext [74.5 91.7 85.7]  overhang   2668 mm2  bed    70 mm2  watertight True
+panel_L                  vol  18.90 cm3  ext [96.8 52.2 73.3]  overhang     72 mm2  bed     0 mm2  watertight True
+panel_R                  vol  18.90 cm3  ext [97.7 55.5 73.3]  overhang     46 mm2  bed     0 mm2  watertight True
+skull                    vol   9.75 cm3  ext [52.6 25.9 18. ]  overhang    261 mm2  bed   406 mm2  watertight True
+jaw                      vol   6.42 cm3  ext [38.6 21.3 18. ]  overhang     69 mm2  bed   327 mm2  watertight True
+tail1                    vol   9.48 cm3  ext [34.2 31.5 18. ]  overhang    254 mm2  bed   327 mm2  watertight True
+tail2                    vol   9.47 cm3  ext [35.1 24.2 18. ]  overhang    254 mm2  bed   327 mm2  watertight True
+tail3                    vol   9.72 cm3  ext [32.7 33.3 18. ]  overhang    228 mm2  bed   330 mm2  watertight True
+thigh_L                  vol   7.48 cm3  ext [45.6 31.2 35. ]  overhang    427 mm2  bed   382 mm2  watertight True
+thigh_R                  vol   7.48 cm3  ext [45.6 31.2 35. ]  overhang    427 mm2  bed   382 mm2  watertight True
+shin_L                   vol   4.87 cm3  ext [39.5 17.6 43.9]  overhang     43 mm2  bed   338 mm2  watertight True
+shin_R                   vol   4.87 cm3  ext [39.5 17.6 43.9]  overhang     43 mm2  bed   338 mm2  watertight True
+arm_L                    vol   0.96 cm3  ext [22.3 22.   4.6]  overhang     18 mm2  bed   202 mm2  watertight True
+arm_R                    vol   0.96 cm3  ext [22.3 22.   4.6]  overhang     18 mm2  bed   202 mm2  watertight True
+slider_L                 vol   0.12 cm3  ext [ 8.9 12.4 10. ]  overhang      0 mm2  bed     0 mm2  watertight True
+slider_R                 vol   0.12 cm3  ext [11.6  9.2  5. ]  overhang     46 mm2  bed    32 mm2  watertight True
+axle_L                   vol   2.20 cm3  ext [ 8.  46.6  7.5]  overhang     64 mm2  bed   177 mm2  watertight True
+axle_R                   vol   2.20 cm3  ext [ 8.  46.6  7.5]  overhang     64 mm2  bed   177 mm2  watertight True
+polecap_L                vol   0.45 cm3  ext [18.  16.1  8. ]  overhang     88 mm2  bed    89 mm2  watertight True
+polecap_R                vol   0.45 cm3  ext [18.  16.1  8. ]  overhang     88 mm2  bed    89 mm2  watertight True
+pin_knuckle_d4x17        vol   0.21 cm3  ext [ 4.  17.6  3.6]  overhang      0 mm2  bed    42 mm2  watertight True
+pin_jaw_d3x17            vol   0.11 cm3  ext [ 3.  17.6  2.6]  overhang      0 mm2  bed    36 mm2  watertight True
+pin_knee_d4_headed       vol   0.20 cm3  ext [ 7.  13.9  6.6]  overhang     39 mm2  bed     4 mm2  watertight True
+pin_shoulder_d4_headed   vol   0.15 cm3  ext [ 7.  10.   6.6]  overhang     27 mm2  bed     4 mm2  watertight True
+pin_bridge_d3x10         vol   0.07 cm3  ext [ 3.  10.5  2.6]  overhang      0 mm2  bed    21 mm2  watertight True
+cal_pin_gauge            vol   7.86 cm3  ext [64. 26.  5.]  overhang      0 mm2  bed  1572 mm2  watertight True
+cal_test_pins            vol   0.76 cm3  ext [28.  16.   3.6]  overhang      0 mm2  bed   154 mm2  watertight True
+cal_knuckle_fork         vol   3.94 cm3  ext [20. 18. 14.]  overhang     37 mm2  bed   292 mm2  watertight True
+cal_knuckle_tongue       vol   1.17 cm3  ext [26.4  5.6  8.8]  overhang     28 mm2  bed   126 mm2  watertight True
+cal_latch_channel        vol   1.96 cm3  ext [18. 20.  8.]  overhang     64 mm2  bed   360 mm2  watertight True
+cal_latch_slider         vol   0.28 cm3  ext [11.   7.6  5.5]  overhang     69 mm2  bed     3 mm2  watertight True
+cal_latch_notch          vol   0.79 cm3  ext [24.  14.   2.8]  overhang      0 mm2  bed   284 mm2  watertight True
+cal_axle_stub            vol   0.61 cm3  ext [ 8.  14.   7.5]  overhang     33 mm2  bed    54 mm2  watertight True
+cal_axle_block           vol   2.20 cm3  ext [18.  8. 18.]  overhang     51 mm2  bed   144 mm2  watertight True
+cal_axle_ear             vol   1.83 cm3  ext [26.   4.6 26. ]  overhang    106 mm2  bed    15 mm2  watertight True
+wrote 36 files

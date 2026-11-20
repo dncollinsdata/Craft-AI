@@ -16,6 +16,7 @@ RAMUS_END = 47.0
 JAW_PIN_D = 3.0
 TEETH_SKULL = (2.0, 11.0, 20.0, 29.0)
 TEETH_JAW = (6.5, 15.5, 24.5)
+TOOTH_HW = 1.6                 # tooth half width (deg), blunt 2 mm teeth
 JAW_POST = (40.0, 80.0)        # skull stop post direction around the jaw pin
 JAW_STOP_R = (3.4, 5.8)
 
@@ -39,17 +40,19 @@ def _jaw_region(c=0.0):
     reg = lo.union(ram)
     for ph in TEETH_JAW:       # jaw teeth rise into the skull
         for s in (1, -1):
-            reg = reg.union(sector(R_SPLIT - 1, R_SPLIT + 1.6 + c, ph - 2.4 - c * 3,
-                                   ph + 2.4 + c * 3, *(sorted((s * (5.6 - c), s * (P.CB + 1))))))
+            reg = reg.union(sector(R_SPLIT - 1, R_SPLIT + 1.6 + c, ph - TOOTH_HW - c * 2,
+                                   ph + TOOTH_HW + c * 2, *(sorted((s * (5.6 - c), s * (P.CB + 1))))))
     return reg
 
 
-def _skull_teeth(c=0.0):
+def _skull_teeth(c=0.0, ca=0.0):
+    """Skull teeth; c = radial clearance (mm), ca = flank clearance (deg)."""
     out = None
+    yc = min(c, 0.3)
     for ph in TEETH_SKULL:
         for s in (1, -1):
-            t = sector(R_SPLIT - 1.6 - c, R_SPLIT + 1, ph - 2.4 - c * 3, ph + 2.4 + c * 3,
-                       *(sorted((s * (5.6 - c), s * (P.CB + 1)))))
+            t = sector(R_SPLIT - 1.6 - c, R_SPLIT + 1, ph - TOOTH_HW - ca, ph + TOOTH_HW + ca,
+                       *(sorted((s * (5.6 - yc), s * (P.CB + 1)))))
             out = t if out is None else out.union(t)
     return out
 
@@ -91,7 +94,7 @@ def skull():
 
 def jaw():
     h = _head_blank()
-    j = h.intersect(_jaw_region(0.0)).cut(_skull_teeth(0.7))
+    j = h.intersect(_jaw_region(0.0)).cut(_skull_teeth(0.5, 1.0))
     j = j.cut(disc(*JAW_PIVOT, (JAW_PIN_D + P.CLR) / 2, -P.CB - 1, P.CB + 1))
     from .hinges import G_STOP
     g0 = JAW_POST[0] - 0.0 - G_STOP

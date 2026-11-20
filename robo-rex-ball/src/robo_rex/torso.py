@@ -24,7 +24,10 @@ def _local_box(t0, t1, r0, r1, y0, y1, phi):
 def latch_channel():
     s = P.SLIDE
     w = P.LATCH_W / 2
-    top = _local_box(-w - s, w + s, 48.2, 52.0, -10, 10, P.LATCH_PHI)
+    # thumb-head slots stop 4.4 mm from the centreline so the rolling spine
+    # stays closed; the flange channel runs underneath, full width
+    top = _local_box(-w - s, w + s, 48.2, 52.0, 4.4, 10, P.LATCH_PHI).union(
+        _local_box(-w - s, w + s, 48.2, 52.0, -10, -4.4, P.LATCH_PHI))
     fl = _local_box(-w - 1.5 - s, w + 1.5 + s, 46.0, 48.4, -10, 10, P.LATCH_PHI)
     groove = _local_box(-1.25, 1.25, 44.9, 46.1, -10, 10, P.LATCH_PHI)
     return top.union(fl).union(groove)
@@ -92,15 +95,14 @@ def slider():
     """Latch slider for the +Y side, modelled in the unlocked position."""
     s = P.SLIDE
     w = P.LATCH_W / 2
-    y0, y1 = 1.0, 1.0 + P.LATCH_LEN
-    head = _local_box(-w, w, 47.5, 52.0, y0, y1, P.LATCH_PHI)
-    fl = _local_box(-w - 1.5, w + 1.5, 46.0 + s, 48.4 - s, y0, y1 - P.LATCH_TRAVEL - 0.4,
-                    P.LATCH_PHI)
+    y0 = 1.0
+    head = _local_box(-w, w, 47.5, 52.0, y0 + 3.8 + s, y0 + 8.0, P.LATCH_PHI)
+    fl = _local_box(-w - 1.5, w + 1.5, 46.0 + s, 48.4 - s, y0, y0 + 4.4, P.LATCH_PHI)
     peg = _local_box(-0.9, 0.9, 45.3, 46.6, y0, y0 + 1.6, P.LATCH_PHI)
     sl = head.union(fl).union(peg).intersect(ball(P.R)).intersect(
         ball(P.R).translate((0, -P.LATCH_TRAVEL, 0)))   # flush when locked
-    for k in range(3):   # thumb grip grooves
-        yy = y0 + 2.0 + 1.8 * k
+    for k in range(2):   # thumb grip grooves
+        yy = y0 + 5.4 + 1.4 * k
         sl = sl.cut(_local_box(-w - 1, w + 1, P.R - 0.5, P.R + 1, yy - 0.4, yy + 0.4,
                                P.LATCH_PHI))
     return sl

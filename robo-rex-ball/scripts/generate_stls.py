@@ -23,7 +23,7 @@ def stl_of(wp, tol=0.02):
     fn = os.path.join(AS.CACHE, "_tmp_export.stl")
     os.makedirs(AS.CACHE, exist_ok=True)
     cq.exporters.export(wp, fn, tolerance=tol, angularTolerance=0.1)
-    return trimesh.load(fn, force="mesh")
+    return PR.clean_mesh(trimesh.load(fn, force="mesh"))
 
 
 def hardware():

@@ -81,7 +81,8 @@ def mesh(name, tol=0.05):
     fn = os.path.join(CACHE, f"{name}_{_src_hash()}.stl")
     if not os.path.exists(fn):
         cq.exporters.export(solid(name), fn, tolerance=tol, angularTolerance=0.15)
-    return trimesh.load(fn, force="mesh")
+    from .printing import clean_mesh
+    return clean_mesh(trimesh.load(fn, force="mesh"))
 
 
 def body_of(name):
@@ -121,4 +122,4 @@ def export_step(q, path):
         loc = location(M)
         col = next((c for k, c in colors.items() if n.startswith(k)), "lightgray")
         asm.add(solid(n), name=n, loc=loc, color=cq.Color(col))
-    asm.save(path)
+    asm.export(path)
