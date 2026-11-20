@@ -76,7 +76,9 @@ def d_pin(length, d=P.PIN_D, head_d=None, head_t=1.2):
     """Pin along +Y starting at y=0, D-flat on -Z (print on the flat)."""
     pin = d_disc(0, 0, d, 0, length, flat_phi=-90, flat=0.4)
     if head_d:
-        pin = pin.union(d_disc(0, 0, head_d, -head_t, 0.01, flat_phi=-90, flat=0.4))
+        # head flat flush with the shank flat so the pin lies flat on the bed
+        pin = pin.union(d_disc(0, 0, head_d, -head_t, 0.01, flat_phi=-90,
+                               flat=head_d / 2 - (d / 2 - 0.4)))
     pin = pin.edges("|Y").fillet(0.2) if False else pin
     return pin
 

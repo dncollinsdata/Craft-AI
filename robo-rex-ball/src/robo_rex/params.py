@@ -70,7 +70,7 @@ RS_LIP = 12.0            # rear shell lip under the front panels (deg)
 RS_LIP_BOTTOM = 4.0      # short lip at the bottom keeps the legs' exit clear
 RS_PHI = (FP_PHI[1] - RS_LIP, FP_PHI[0] + 360 + RS_LIP_BOTTOM)   # (58, 236)
 BRIDGE_PHI = (78.0, 112.0)   # rear shell centre bridge (under dorsal skin)
-FP_DINO = 100.0          # front panel rotation into dinosaur mode
+FP_DINO = 150.0          # front panel rotation into dinosaur mode (folds back like a carapace)
 
 # ------------------------------------------------------- latch -------------
 LATCH_PHI = 300.0        # slider location on the belly
@@ -80,7 +80,7 @@ LATCH_LEN = 7.6          # slider length along y
 
 # --------------------------------------------------------- joints ----------
 # head: pivot at the outer corner of the head/dorsal boundary
-HEAD_DINO = 65.0         # head rotation ball -> dino (CCW, deg)
+HEAD_DINO = 40.0         # head rotation ball -> dino (CCW, deg)
 JAW_OPEN = -30.0         # jaw opening (deg, relative to skull)
 TAIL_DINO = (-20.0, -30.0, -30.0)   # tail joint rotations ball -> dino (at stops)
 DINO_PITCH = 25.75       # body pitched nose-up in dino mode so the tail tip
