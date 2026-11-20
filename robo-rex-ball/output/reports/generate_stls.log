@@ -1,8 +1,8 @@
-torso                    vol  88.08 cm3  ext [100.   63.7  68.1]  overhang    470 mm2  bed     0 mm2  watertight True
+torso                    vol  88.09 cm3  ext [100.   63.7  68.1]  overhang    470 mm2  bed     0 mm2  watertight True
 rear_shell               vol  20.49 cm3  ext [74.5 91.7 85.7]  overhang   2668 mm2  bed    70 mm2  watertight True
-panel_L                  vol  18.90 cm3  ext [96.8 52.2 73.3]  overhang     72 mm2  bed     0 mm2  watertight True
-panel_R                  vol  18.90 cm3  ext [97.7 55.5 73.3]  overhang     46 mm2  bed     0 mm2  watertight True
-skull                    vol   9.75 cm3  ext [52.6 25.9 18. ]  overhang    261 mm2  bed   406 mm2  watertight True
+panel_L                  vol  18.88 cm3  ext [96.8 52.2 73.3]  overhang     72 mm2  bed     0 mm2  watertight True
+panel_R                  vol  18.88 cm3  ext [97.7 55.5 73.3]  overhang     45 mm2  bed     0 mm2  watertight True
+skull                    vol   9.76 cm3  ext [52.6 25.9 18. ]  overhang    260 mm2  bed   406 mm2  watertight True
 jaw                      vol   6.42 cm3  ext [38.6 21.3 18. ]  overhang     69 mm2  bed   327 mm2  watertight True
 tail1                    vol   9.48 cm3  ext [34.2 31.5 18. ]  overhang    254 mm2  bed   327 mm2  watertight True
 tail2                    vol   9.47 cm3  ext [35.1 24.2 18. ]  overhang    254 mm2  bed   327 mm2  watertight True
@@ -21,8 +21,8 @@ polecap_L                vol   0.45 cm3  ext [18.  16.1  8. ]  overhang     88 m
 polecap_R                vol   0.45 cm3  ext [18.  16.1  8. ]  overhang     88 mm2  bed    89 mm2  watertight True
 pin_knuckle_d4x17        vol   0.21 cm3  ext [ 4.  17.6  3.6]  overhang      0 mm2  bed    42 mm2  watertight True
 pin_jaw_d3x17            vol   0.11 cm3  ext [ 3.  17.6  2.6]  overhang      0 mm2  bed    36 mm2  watertight True
-pin_knee_d4_headed       vol   0.20 cm3  ext [ 7.  13.9  6.6]  overhang     39 mm2  bed     4 mm2  watertight True
-pin_shoulder_d4_headed   vol   0.15 cm3  ext [ 7.  10.   6.6]  overhang     27 mm2  bed     4 mm2  watertight True
+pin_knee_d4_headed       vol   0.19 cm3  ext [ 7.  13.9  5.1]  overhang      0 mm2  bed    38 mm2  watertight True
+pin_shoulder_d4_headed   vol   0.14 cm3  ext [ 7.  10.   5.1]  overhang      0 mm2  bed    29 mm2  watertight True
 pin_bridge_d3x10         vol   0.07 cm3  ext [ 3.  10.5  2.6]  overhang      0 mm2  bed    21 mm2  watertight True
 cal_pin_gauge            vol   7.86 cm3  ext [64. 26.  5.]  overhang      0 mm2  bed  1572 mm2  watertight True
 cal_test_pins            vol   0.76 cm3  ext [28.  16.   3.6]  overhang      0 mm2  bed   154 mm2  watertight True

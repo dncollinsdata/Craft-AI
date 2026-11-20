@@ -4,7 +4,7 @@
   "qty": 1,
   "description": "Central core: axle hub, pivots, dorsal + belly skin, latch channel",
   "file": "output/stl/torso.stl",
-  "volume_cm3": 88.08,
+  "volume_cm3": 88.09,
   "extents_mm": [
    100.0,
    63.7,
@@ -70,7 +70,7 @@
   "qty": 1,
   "description": "Left swinging front armour panel",
   "file": "output/stl/panel_L.stl",
-  "volume_cm3": 18.9,
+  "volume_cm3": 18.88,
   "extents_mm": [
    96.8,
    52.2,
@@ -103,14 +103,14 @@
   "qty": 1,
   "description": "Right swinging front armour panel (mirror)",
   "file": "output/stl/panel_R.stl",
-  "volume_cm3": 18.9,
+  "volume_cm3": 18.88,
   "extents_mm": [
    97.7,
    55.5,
    73.3
   ],
   "fits_ender3": true,
-  "overhang_area_mm2": 46.0,
+  "overhang_area_mm2": 45.0,
   "bed_contact_mm2": 0.0,
   "watertight": true,
   "rotation": [
@@ -136,14 +136,14 @@
   "qty": 1,
   "description": "Armoured skull with eyes, brow, nostrils, teeth",
   "file": "output/stl/skull.stl",
-  "volume_cm3": 9.75,
+  "volume_cm3": 9.76,
   "extents_mm": [
    52.6,
    25.9,
    18.0
   ],
   "fits_ender3": true,
-  "overhang_area_mm2": 261.0,
+  "overhang_area_mm2": 260.0,
   "bed_contact_mm2": 406.0,
   "watertight": true,
   "rotation": [
@@ -763,15 +763,15 @@
   "qty": 2,
   "description": "Knee pin with head",
   "file": "output/stl/pin_knee_d4_headed.stl",
-  "volume_cm3": 0.2,
+  "volume_cm3": 0.19,
   "extents_mm": [
    7.0,
    13.9,
-   6.6
+   5.1
   ],
   "fits_ender3": true,
-  "overhang_area_mm2": 39.0,
-  "bed_contact_mm2": 4.0,
+  "overhang_area_mm2": 0.0,
+  "bed_contact_mm2": 38.0,
   "watertight": true,
   "rotation": [
    [
@@ -796,15 +796,15 @@
   "qty": 2,
   "description": "Shoulder pin with head",
   "file": "output/stl/pin_shoulder_d4_headed.stl",
-  "volume_cm3": 0.15,
+  "volume_cm3": 0.14,
   "extents_mm": [
    7.0,
    10.0,
-   6.6
+   5.1
   ],
   "fits_ender3": true,
-  "overhang_area_mm2": 27.0,
-  "bed_contact_mm2": 4.0,
+  "overhang_area_mm2": 0.0,
+  "bed_contact_mm2": 29.0,
   "watertight": true,
   "rotation": [
    [

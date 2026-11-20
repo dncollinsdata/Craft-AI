@@ -6,10 +6,10 @@
    "watertight": true,
    "winding": true,
    "nonmanifold_edges": 0,
-   "volume_cm3": 88.02,
+   "volume_cm3": 88.04,
    "euler": -10,
-   "thick_p01": 1.24,
-   "thick_frac_below_1p2": 0.0075
+   "thick_p01": 0.84,
+   "thick_frac_below_1p2": 0.0125
   },
   "rear_shell": {
    "brep_valid": true,
@@ -28,10 +28,10 @@
    "watertight": true,
    "winding": true,
    "nonmanifold_edges": 0,
-   "volume_cm3": 18.89,
+   "volume_cm3": 18.87,
    "euler": 0,
-   "thick_p01": 0.52,
-   "thick_frac_below_1p2": 0.02
+   "thick_p01": 0.54,
+   "thick_frac_below_1p2": 0.0208
   },
   "panel_R": {
    "brep_valid": true,
@@ -39,10 +39,10 @@
    "watertight": true,
    "winding": true,
    "nonmanifold_edges": 0,
-   "volume_cm3": 18.89,
+   "volume_cm3": 18.87,
    "euler": 0,
-   "thick_p01": 0.52,
-   "thick_frac_below_1p2": 0.02
+   "thick_p01": 0.54,
+   "thick_frac_below_1p2": 0.0208
   },
   "skull": {
    "brep_valid": true,
@@ -50,10 +50,10 @@
    "watertight": true,
    "winding": true,
    "nonmanifold_edges": 0,
-   "volume_cm3": 9.73,
+   "volume_cm3": 9.74,
    "euler": -4,
-   "thick_p01": 1.31,
-   "thick_frac_below_1p2": 0.01
+   "thick_p01": 1.79,
+   "thick_frac_below_1p2": 0.0067
   },
   "jaw": {
    "brep_valid": true,
@@ -195,7 +195,7 @@
    "nonmanifold_edges": 0,
    "volume_cm3": 2.2,
    "euler": 2,
-   "thick_p01": 2.0,
+   "thick_p01": 1.9,
    "thick_frac_below_1p2": 0.0
   },
   "axle_R": {
@@ -239,7 +239,7 @@
    "nonmanifold_edges": 0,
    "bodies": 1,
    "fits_ender3": true,
-   "volume_cm3": 88.08,
+   "volume_cm3": 88.09,
    "overhang_mm2": 470.0,
    "qty": 1,
    "kind": "part"
@@ -261,7 +261,7 @@
    "nonmanifold_edges": 0,
    "bodies": 1,
    "fits_ender3": true,
-   "volume_cm3": 18.9,
+   "volume_cm3": 18.88,
    "overhang_mm2": 72.0,
    "qty": 1,
    "kind": "part"
@@ -272,8 +272,8 @@
    "nonmanifold_edges": 0,
    "bodies": 1,
    "fits_ender3": true,
-   "volume_cm3": 18.9,
-   "overhang_mm2": 46.0,
+   "volume_cm3": 18.88,
+   "overhang_mm2": 45.0,
    "qty": 1,
    "kind": "part"
   },
@@ -283,8 +283,8 @@
    "nonmanifold_edges": 0,
    "bodies": 1,
    "fits_ender3": true,
-   "volume_cm3": 9.75,
-   "overhang_mm2": 261.0,
+   "volume_cm3": 9.76,
+   "overhang_mm2": 260.0,
    "qty": 1,
    "kind": "part"
   },
@@ -492,8 +492,8 @@
    "nonmanifold_edges": 0,
    "bodies": 1,
    "fits_ender3": true,
-   "volume_cm3": 0.2,
-   "overhang_mm2": 39.0,
+   "volume_cm3": 0.19,
+   "overhang_mm2": 0.0,
    "qty": 2,
    "kind": "hardware"
   },
@@ -503,8 +503,8 @@
    "nonmanifold_edges": 0,
    "bodies": 1,
    "fits_ender3": true,
-   "volume_cm3": 0.15,
-   "overhang_mm2": 27.0,
+   "volume_cm3": 0.14,
+   "overhang_mm2": 0.0,
    "qty": 2,
    "kind": "hardware"
   },
@@ -634,7 +634,7 @@
  "overlaps_ball": [],
  "outside_sphere_ball": {},
  "path": {
-  "states": 486,
+  "states": 511,
   "max_step_deg": 1.0,
   "collisions": []
  },
@@ -643,12 +643,12 @@
   "head": {
    "range": [
     0.0,
-    65.0
+    40.0
    ],
    "free_at_lo": true,
    "free_at_hi": true,
    "stop_lo_at": -2.0,
-   "stop_hi_at": 67.5,
+   "stop_hi_at": 42.5,
    "stops_ok": true
   },
   "jaw": {
@@ -731,12 +731,12 @@
   "panel_L": {
    "range": [
     0.0,
-    100.0
+    150.0
    ],
    "free_at_lo": true,
    "free_at_hi": true,
    "stop_lo_at": -1.5,
-   "stop_hi_at": 101.5,
+   "stop_hi_at": 151.5,
    "stops_ok": true
   }
  },
@@ -771,8 +771,8 @@
   "shin_L/rear_shell": 5.0,
   "shin_L/panel_L": 5.0,
   "arm_L/torso": 0.09,
-  "panel_L/rear_shell": 0.27,
-  "panel_L/torso": 0.33,
+  "panel_L/rear_shell": 0.3,
+  "panel_L/torso": 0.4,
   "slider_L/torso": 0.35,
   "slider_L/panel_L": 5.0,
   "skull/panel_L": 0.4,
@@ -781,9 +781,9 @@
  "standing": {
   "mass_g": 178.1,
   "com": [
-   -4.88,
+   -8.32,
    0.0,
-   4.48
+   1.52
   ],
   "ground_z": -61.52,
   "ground_contacts": [
@@ -799,23 +799,23 @@
    -33.0,
    33.0
   ],
-  "com_margin_mm": 25.84,
+  "com_margin_mm": 29.28,
   "stable": true,
   "tail_contact": true,
   "tail_contact_x": -76.5,
-  "tail_load_N": 0.1206,
-  "tail_load_frac": 0.069,
-  "upper_com_x": -6.13,
+  "tail_load_N": 0.1993,
+  "tail_load_frac": 0.114,
+  "upper_com_x": -10.12,
   "hip_moment_needed_Nmm": 0.0,
-  "knee_torque_Nmm": 7.3,
+  "knee_torque_Nmm": 6.918,
   "knee_stop_carries": true,
-  "length_mm": 135.6,
-  "height_mm": 128.7,
+  "length_mm": 139.8,
+  "height_mm": 115.7,
   "width_mm": 100.0
  },
  "rolling": {
-  "frac_r_ge_49": 0.622,
-  "frac_r_ge_46_5": 0.991,
+  "frac_r_ge_49": 0.6212,
+  "frac_r_ge_46_5": 0.9912,
   "r_min": 22.9,
   "r_max": 50.0,
   "sagittal_frac_ge_49": 0.9764,
@@ -824,13 +824,13 @@
   "lateral_max_gap_deg": 0.5,
   "com_offset_mm": 2.9,
   "com": [
-   2.55,
+   2.56,
    0.0,
    -1.37
   ],
   "mass_g": 178.1
  },
- "runtime_s": 46.5,
+ "runtime_s": 46.0,
  "hard_checks": {
   "all parts valid single solids": true,
   "all part meshes watertight, 0 non-manifold edges": true,
