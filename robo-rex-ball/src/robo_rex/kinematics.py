@@ -20,8 +20,8 @@ ANKLE = (KNEE[0] + pol(P.SHIN_L, P.SHIN_DIR)[0], KNEE[1] + pol(P.SHIN_L, P.SHIN_
 
 # Ball-mode leg/arm angles were found with scripts/search_folds.py (collision
 # search inside the envelope) and are frozen here.
-LEG_BALL = (-32.0, 184.0)
-LEG_MID = (-32.0, 80.0)        # waypoint from scripts/plan_leg_path.py      # (hip, knee) rotation from standing pose
+LEG_BALL = (-54.0, 184.0)
+LEG_MID = (-54.0, 64.0)        # waypoint from scripts/plan_leg_path.py      # (hip, knee) rotation from standing pose
 ARM_BALL = 75.0
 
 JOINTS = {
@@ -40,9 +40,9 @@ JOINTS = {
                     range=(0.0, ARM_BALL), home="dino"),
     "arm_R":   dict(parent="torso", pivot=P.SHOULDER, ball=ARM_BALL, dino=0.0,
                     range=(0.0, ARM_BALL), home="dino"),
-    "thigh_L": dict(parent="torso", pivot=(0.0, 0.0), ball=LEG_BALL[0], dino=0.0,
+    "thigh_L": dict(parent="torso", pivot=(0.0, 0.0), ball=LEG_BALL[0], dino=-P.DINO_PITCH,
                     range=(LEG_BALL[0], 0.0), home="dino"),
-    "thigh_R": dict(parent="torso", pivot=(0.0, 0.0), ball=LEG_BALL[0], dino=0.0,
+    "thigh_R": dict(parent="torso", pivot=(0.0, 0.0), ball=LEG_BALL[0], dino=-P.DINO_PITCH,
                     range=(LEG_BALL[0], 0.0), home="dino"),
     "shin_L":  dict(parent="thigh_L", pivot=KNEE, ball=LEG_BALL[1], dino=0.0,
                     range=(0.0, LEG_BALL[1]), home="dino"),
@@ -78,13 +78,16 @@ def rot_matrix(pivot, ang):
 
 def pose_q(mode):
     q = {j: d[mode] for j, d in JOINTS.items()}
+    q["pitch"] = P.DINO_PITCH if mode == "dino" else 0.0
     q.update({s: SLIDER_POSE[mode] for s in SLIDERS})
     return q
 
 
 def transforms(q):
     """World transform (4x4) of every body for joint values q."""
-    T = {"torso": np.eye(4)}
+    # "pitch" orients the whole toy in the world (dino stance); it has no
+    # effect on relative positions, so collisions are independent of it.
+    T = {"torso": rot_matrix((0.0, 0.0), q.get("pitch", 0.0))}
 
     def get(name):
         if name in T:
@@ -92,8 +95,8 @@ def transforms(q):
         if name in SLIDERS:
             M = np.eye(4)
             M[1, 3] = SLIDERS[name] * q.get(name, 0.0)
-            T[name] = M
-            return M
+            T[name] = get("torso") @ M
+            return T[name]
         if name in ATTACH:
             T[name] = get(ATTACH[name])
             return T[name]
@@ -110,6 +113,7 @@ def transforms(q):
 # linearly from their current value to the target.  Ball -> dino is the
 # exact reverse.
 SEQUENCE = [
+    ("pick up and level body", {"pitch": 0.0}),
     ("close jaw", {"jaw": 0.0}),
     ("fold head down", {"head": 0.0}),
     ("curl tail", {"tail1": 0.0, "tail2": 0.0, "tail3": 0.0}),

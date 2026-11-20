@@ -98,11 +98,16 @@ def posed_meshes(q, names=None):
     return out
 
 
+def location(M):
+    from OCP.gp import gp_Trsf
+    T = gp_Trsf()
+    T.SetValues(*[float(v) for v in np.asarray(M)[:3, :4].flatten()])
+    return cq.Location(T)
+
+
 def posed_solid(name, q):
-    from cadquery import Location, Matrix
     M = K.transforms(q)[body_of(name)]
-    s = solid(name).val()
-    return s.transformGeometry(Matrix([list(r) for r in M[:3]]))
+    return solid(name).val().moved(location(M))
 
 
 def export_step(q, path):
@@ -113,7 +118,7 @@ def export_step(q, path):
               "arm": "darkorange"}
     for n in ORDER:
         M = Tm[body_of(n)]
-        loc = cq.Location(cq.Matrix([list(r) for r in M[:3]]))
+        loc = location(M)
         col = next((c for k, c in colors.items() if n.startswith(k)), "lightgray")
         asm.add(solid(n), name=n, loc=loc, color=cq.Color(col))
     asm.save(path)

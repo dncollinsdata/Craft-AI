@@ -65,9 +65,10 @@ CAP_LUG = (8.0, 10.0, 4.0)   # pole cap stop lug: r_in, r_out, width
 CAP_LUG_PHI = -90.0      # direction of the fixed lug (ball frame)
 
 # ------------------------------------------------------- armour ------------
-FP_PHI = (-110.0, 70.0)  # front panel coverage in ball mode
+FP_PHI = (-128.0, 70.0)  # front panel coverage in ball mode
 RS_LIP = 12.0            # rear shell lip under the front panels (deg)
-RS_PHI = (FP_PHI[1] - RS_LIP, FP_PHI[0] + 360 + RS_LIP)   # (58, 262)
+RS_LIP_BOTTOM = 4.0      # short lip at the bottom keeps the legs' exit clear
+RS_PHI = (FP_PHI[1] - RS_LIP, FP_PHI[0] + 360 + RS_LIP_BOTTOM)   # (58, 236)
 BRIDGE_PHI = (78.0, 112.0)   # rear shell centre bridge (under dorsal skin)
 FP_DINO = 100.0          # front panel rotation into dinosaur mode
 
@@ -81,7 +82,9 @@ LATCH_LEN = 7.6          # slider length along y
 # head: pivot at the outer corner of the head/dorsal boundary
 HEAD_DINO = 65.0         # head rotation ball -> dino (CCW, deg)
 JAW_OPEN = -30.0         # jaw opening (deg, relative to skull)
-TAIL_DINO = (-39.2, -28.3, -28.3)   # tail joint rotations ball -> dino
+TAIL_DINO = (-20.0, -30.0, -30.0)   # tail joint rotations ball -> dino (at stops)
+DINO_PITCH = 25.75       # body pitched nose-up in dino mode so the tail tip
+                         # rests on the ground (tripod stance)
 
 # legs (modelled in dinosaur pose)
 THIGH_L = 26.0

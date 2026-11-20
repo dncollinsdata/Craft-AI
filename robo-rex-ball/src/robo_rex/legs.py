@@ -40,7 +40,7 @@ def thigh():
 
 
 # ------------------------------------------------------------- shin + foot --
-KNEE_POST = (50.0, 174.0)     # angular extent of the thigh bar seen from the knee
+KNEE_POST = (61.5, 162.5)     # angular extent of the tapered thigh bar at r=7.6 from the knee
 
 
 def shin():
@@ -48,7 +48,7 @@ def shin():
     s = disc(*KNEE, 6.5, y0, y1)
     s = s.union(_bar(KNEE, ANKLE, 11.0, 9.0, y0, y1))
     s = s.union(disc(*ANKLE, 5.5, y0, y1))
-    ring, _ = c_hub_stop(KNEE, 6.9, 10.2, P.Y_THIGH[0] + 0.4, y0 + 0.1, KNEE_POST,
+    ring, _ = c_hub_stop(KNEE, 7.6, 10.8, P.Y_THIGH[0] + 0.4, y0 + 0.1, KNEE_POST,
                          (0.0, LEG_BALL[1]))
     s = s.union(ring)
     # foot: body + three blunt clawed toes + heel spur

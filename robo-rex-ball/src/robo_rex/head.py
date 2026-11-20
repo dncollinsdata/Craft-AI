@@ -7,7 +7,7 @@ skull.  The jaw is the inner part of the head and hinges at the back.
 import cadquery as cq
 from . import params as P
 from .geom import sector, disc, d_disc, ball, pol, rot, slab_y, shell
-from .hinges import knuckle_child
+from .hinges import knuckle_child, c_hub_stop
 from .kinematics import JAW_PIVOT
 
 R_SPLIT = 37.0
@@ -16,6 +16,8 @@ RAMUS_END = 47.0
 JAW_PIN_D = 3.0
 TEETH_SKULL = (2.0, 11.0, 20.0, 29.0)
 TEETH_JAW = (6.5, 15.5, 24.5)
+JAW_POST = (40.0, 80.0)        # skull stop post direction around the jaw pin
+JAW_STOP_R = (3.4, 5.8)
 
 
 def _head_blank():
@@ -64,6 +66,8 @@ def skull():
     h = _head_blank()
     jaw_sweep = _jaw_sweep(0.3).cut(_skull_teeth())
     s = h.cut(jaw_sweep)
+    _, post = c_hub_stop(JAW_PIVOT, *JAW_STOP_R, -6.2, 6.2, JAW_POST, (P.JAW_OPEN, 0.0))
+    s = s.union(post.intersect(h))
     s = s.cut(d_disc(*JAW_PIVOT, JAW_PIN_D, -P.CB - 1, P.CB + 1, flat_phi=0, flat=0.4))
     # eyes: recessed sockets with a pupil boss, under a proud brow ridge
     ex, ez = pol(44.5, 30.0)
@@ -87,8 +91,12 @@ def skull():
 
 def jaw():
     h = _head_blank()
-    j = h.intersect(_jaw_region(0.0)).cut(_skull_teeth(0.3))
+    j = h.intersect(_jaw_region(0.0)).cut(_skull_teeth(0.7))
     j = j.cut(disc(*JAW_PIVOT, (JAW_PIN_D + P.CLR) / 2, -P.CB - 1, P.CB + 1))
+    from .hinges import G_STOP
+    g0 = JAW_POST[0] - 0.0 - G_STOP
+    g1 = JAW_POST[1] - P.JAW_OPEN + G_STOP
+    j = j.cut(sector(JAW_STOP_R[0] - 0.3, JAW_STOP_R[1] + 3, g0, g1, -7, 7, c=JAW_PIVOT))
     # remove the head knuckle tongue from the jaw (it belongs to the skull)
     j = j.cut(disc(*pol(P.R_KNUCKLE, P.PHI_HEAD_DORSAL), P.KNUCKLE_R + 0.6, -10, 10))
     return j

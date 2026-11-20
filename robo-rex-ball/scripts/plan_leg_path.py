@@ -11,6 +11,7 @@ from robo_rex import kinematics as K, collide as C
 from robo_rex import torso as T, armor as A, legs as L, hinges as HG, head as HD, tail as TL
 
 q0 = K.pose_q("dino")
+q0["pitch"] = 0.0   # plan in the torso frame
 q0.update({"head": 0.0, "tail1": 0.0, "tail2": 0.0, "tail3": 0.0,
            "arm_L": K.ARM_BALL, "arm_R": K.ARM_BALL})
 Tm = K.transforms(q0)
@@ -21,7 +22,9 @@ body = {"skull": "head"}
 M = {n: C.xf(C.from_solid(w), Tm[body.get(n, n)]) for n, w in src.items()}
 th, sh = C.from_solid(L.thigh()), C.from_solid(L.shin())
 STEP = 4.0
-H = np.arange(-100, 180 + 1e-6, STEP)
+HMIN = float(os.environ.get("HIP_MIN", -100))
+H0 = K.JOINTS["thigh_L"]["dino"]
+H = H0 + STEP * np.arange(int((HMIN - H0) / STEP), int((180 - H0) / STEP) + 1)
 Kn = np.arange(-8, 196 + 1e-6, STEP)
 
 
@@ -39,8 +42,12 @@ grid = np.zeros((len(H), len(Kn)), bool)
 for i, qh in enumerate(H):
     for j, qk in enumerate(Kn):
         grid[i, j] = free(qh, qk)
-start = (int(np.argmin(abs(H - 0))), int(np.argmin(abs(Kn - 0))))
-goal = (int(np.argmin(abs(H - K.LEG_BALL[0]))), int(np.argmin(abs(Kn - K.LEG_BALL[1]))))
+start = (int(np.argmin(abs(H - H0))), int(np.argmin(abs(Kn - 0))))
+if os.environ.get("GOAL"):
+    gh, gk = map(float, os.environ["GOAL"].split(","))
+else:
+    gh, gk = K.LEG_BALL
+goal = (int(np.argmin(abs(H - gh))), int(np.argmin(abs(Kn - gk))))
 print("free cells %d / %d, start free %s, goal free %s" % (grid.sum(), grid.size, grid[start], grid[goal]))
 prev = {start: None}
 dq = deque([start])
